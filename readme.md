@@ -2,6 +2,8 @@
 
 This package integrates into default `artisan serve` command an WebSockets server for live reloading the application when any file changed.
 
+![Laravel serve livereload](demo.gif)
+
 ## Installation
 
 `composer require bangnokia/laravel-serve-livereload --dev`
