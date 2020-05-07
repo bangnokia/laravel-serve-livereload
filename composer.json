@@ -11,8 +11,8 @@
     "require": {
         "illuminate/console": "^7.0",
         "cboden/ratchet": "^0.4",
-        "symfony/process": "^5.1@dev",
-        "yosymfony/resource-watcher": "^2.0@dev"
+        "symfony/process": "^5.0",
+        "yosymfony/resource-watcher": "^2.0"
     },
     "require-dev": {
         "orchestra/testbench": "^5.0"
