@@ -23,18 +23,22 @@ class ServeCommand extends Command
         ];
 
         while (count($processes)) {
+            /* @var \Symfony\Component\Process\Process $process */
             foreach ($processes as $i => $process) {
                 if (!$process->isStarted()) {
                     $process->setTimeout(null);
                     $process->start();
                     continue;
                 }
-                if (($info = trim($process->getIncrementalOutput())) && $info) {
+
+                if ($info = trim($process->getIncrementalOutput())) {
                     $this->info($info);
                 }
-                if (($error = trim($process->getIncrementalErrorOutput())) && $error) {
-                    $this->error($error);
+
+                if ($error = trim($process->getIncrementalErrorOutput())) {
+                    $this->line($error);
                 }
+
                 if (!$process->isRunning()) {
                     unset($processes[$i]);
                 }
