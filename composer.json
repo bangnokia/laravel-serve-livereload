@@ -11,7 +11,7 @@
     "require": {
         "illuminate/console": "^6.0|^7.0",
         "cboden/ratchet": "^0.4",
-        "symfony/process": "^5.0",
+        "symfony/process": "^4.4|^5.0",
         "yosymfony/resource-watcher": "^2.0"
     },
     "require-dev": {
