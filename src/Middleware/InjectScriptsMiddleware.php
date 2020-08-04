@@ -21,7 +21,7 @@ class InjectScriptsMiddleware
             && !$response instanceof JsonResponse
         ) {
             $response->setContent(
-                (new Injector)->injectScripts($response->getContent())
+                (new Injector())->injectScripts($response->getContent())
             );
         }
 

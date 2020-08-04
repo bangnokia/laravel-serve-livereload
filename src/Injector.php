@@ -8,17 +8,18 @@ class Injector
 {
     /**
      * Append script to html
-     * I dont care it doesn't place before </body> tag or not
+     * I dont care it doesn't place before </body> tag or not.
      *
-     * @param  string  $content
+     * @param string $content
+     *
      * @return string
      */
     public function injectScripts($content)
     {
-        $content = (string)view('serve_livereload::script', [
-                'host' => '127.0.0.1',
-                'port' => ServeWebSocketsCommand::port()
-            ]).$content;
+        $content = (string) view('serve_livereload::script', [
+            'host' => '127.0.0.1',
+            'port' => ServeWebSocketsCommand::port(),
+        ]).$content;
 
         return $content;
     }

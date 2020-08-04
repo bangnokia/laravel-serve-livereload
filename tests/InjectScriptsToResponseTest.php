@@ -39,7 +39,7 @@ class InjectScriptsToResponseTest extends TestCase
         });
 
         $this->get('/_test/html')
-            ->assertSee("ws://127.0.0.1:".ServeWebSocketsCommand::port());
+            ->assertSee('ws://127.0.0.1:'.ServeWebSocketsCommand::port());
     }
 
     public function test_it_doesnt_inject_script_to_post_request()
@@ -50,7 +50,7 @@ class InjectScriptsToResponseTest extends TestCase
 
         $this->post('/_test/html')
             ->assertSee('html')
-            ->assertDontSee("ws://127.0.0.1:".ServeWebSocketsCommand::port());
+            ->assertDontSee('ws://127.0.0.1:'.ServeWebSocketsCommand::port());
     }
 
     public function test_it_doesnt_inject_scripts_to_json_response()
@@ -77,7 +77,7 @@ class InjectScriptsToResponseTest extends TestCase
 
         $this->get('/_test/html', ['HTTP_X-Requested-With' => 'XMLHttpRequest'])
             ->assertSee('html string')
-            ->assertDontSee("ws://127.0.0.1:".ServeWebSocketsCommand::port());
+            ->assertDontSee('ws://127.0.0.1:'.ServeWebSocketsCommand::port());
     }
 
     public function tearDown(): void
