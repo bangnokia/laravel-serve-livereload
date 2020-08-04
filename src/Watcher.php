@@ -2,12 +2,12 @@
 
 namespace BangNokia\ServeLiveReload;
 
+use Illuminate\Support\Facades\Cache;
 use React\EventLoop\LoopInterface;
 use Symfony\Component\Finder\Finder;
 use Yosymfony\ResourceWatcher\Crc32ContentHash;
 use Yosymfony\ResourceWatcher\ResourceCacheMemory;
 use Yosymfony\ResourceWatcher\ResourceWatcher;
-use Illuminate\Support\Facades\Cache;
 
 class Watcher
 {
@@ -25,9 +25,9 @@ class Watcher
     public function startWatching(\Closure $callback)
     {
         $watcher = new ResourceWatcher(
-            new ResourceCacheMemory,
+            new ResourceCacheMemory(),
             $this->finder,
-            new Crc32ContentHash
+            new Crc32ContentHash()
         );
 
         $this->loop->addPeriodicTimer(0.5, function () use ($watcher, $callback) {

@@ -19,7 +19,7 @@ class ServeCommand extends Command
 
         $processes = [
             $httpProcess = new Process([$phpBinaryPath, $artisanPath, 'serve:http']),
-            $socketProcess = new Process([$phpBinaryPath, $artisanPath, 'serve:websockets'])
+            $socketProcess = new Process([$phpBinaryPath, $artisanPath, 'serve:websockets']),
         ];
 
         while (count($processes)) {

@@ -7,7 +7,7 @@ use Illuminate\Foundation\Console\ServeCommand;
 class ServeHttpCommand extends ServeCommand
 {
     /**
-     * The console command name
+     * The console command name.
      *
      * @var string
      */

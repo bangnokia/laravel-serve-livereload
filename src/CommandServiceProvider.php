@@ -10,7 +10,6 @@ use Illuminate\Contracts\Support\DeferrableProvider;
 
 class CommandServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-
     public function register()
     {
         // override serve command
@@ -22,7 +21,7 @@ class CommandServiceProvider extends ServiceProvider implements DeferrableProvid
         $this->commands([
             ServeCommand::class,
             ServeHttpCommand::class,
-            ServeWebSocketsCommand::class
+            ServeWebSocketsCommand::class,
         ]);
 
         $this->mergeConfigFrom(__DIR__.'/../config/serve_livereload.php', 'serve_livereload');
@@ -31,7 +30,7 @@ class CommandServiceProvider extends ServiceProvider implements DeferrableProvid
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/serve_livereload.php' => config_path('serve_livereload.php')
+            __DIR__.'/../config/serve_livereload.php' => config_path('serve_livereload.php'),
         ]);
     }
 
