@@ -1,8 +1,6 @@
 <?php
 
-
 namespace BangNokia\ServeLiveReload;
-
 
 use Ratchet\ConnectionInterface;
 use Ratchet\MessageComponentInterface;
@@ -13,24 +11,24 @@ class Socket implements MessageComponentInterface
 
     public function __construct()
     {
-        self::$clients = new \SplObjectStorage;
+        self::$clients = new \SplObjectStorage();
     }
 
-    function onOpen(ConnectionInterface $conn)
+    public function onOpen(ConnectionInterface $conn)
     {
         self::$clients->attach($conn);
     }
 
-    function onClose(ConnectionInterface $conn)
+    public function onClose(ConnectionInterface $conn)
     {
         self::$clients->detach($conn);
     }
 
-    function onError(ConnectionInterface $conn, \Exception $e)
+    public function onError(ConnectionInterface $conn, \Exception $e)
     {
     }
 
-    function onMessage(ConnectionInterface $from, $msg)
+    public function onMessage(ConnectionInterface $from, $msg)
     {
     }
 }

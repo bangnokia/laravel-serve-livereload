@@ -17,7 +17,6 @@ use Symfony\Component\Finder\Finder;
 
 class ServeWebSocketsCommand extends Command
 {
-
     /**
      * The console command name.
      *
@@ -48,16 +47,16 @@ class ServeWebSocketsCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return int
-     *
      * @throws \Exception
+     *
+     * @return int
      */
     public function handle()
     {
         $this->loop = LoopFactory::create();
 
         $this->loop->futureTick(function () {
-            $this->line("<info>Websockets server started:</info> ws://127.0.0.1:".self::port());
+            $this->line('<info>Websockets server started:</info> ws://127.0.0.1:'.self::port());
         });
 
         $this->startWatcher();
@@ -80,7 +79,7 @@ class ServeWebSocketsCommand extends Command
     {
         try {
             $this->server = new IoServer(
-                new HttpServer(new WsServer(new Socket)),
+                new HttpServer(new WsServer(new Socket())),
                 new Reactor('127.0.0.1:'.self::port(), $this->loop),
                 $this->loop
             );
