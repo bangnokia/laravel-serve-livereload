@@ -6,7 +6,7 @@ This package integrates into default `artisan serve` command an WebSockets serve
 
 ## Installation
 
-For laravel 8, please use version ^1.0, and below use version 0.x
+For laravel 8, please use version ^1.x, and below use version 0.x
 
 `composer require bangnokia/laravel-serve-livereload --dev`
 
