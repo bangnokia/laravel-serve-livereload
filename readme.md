@@ -17,3 +17,24 @@ For laravel 8, please use version ^1.x, and below use version 0.x
 Open terminal and run `php artisan serve`
 
 This package works even when you use custom vhost such as `valet` or `laragon`
+
+## Configuration
+
+By default, this package looking for files changes in these directories:
+
+```
+/app
+/public 
+/config 
+/routes 
+/resources
+```
+
+If you want to customize the watched forlders, you can publish the configuration file by this commmand:
+
+```bash
+php artisan vendor:publish --provider="BangNokia\ServeLiveReload\CommandServiceProvider"
+```
+
+and then you can config what you want in the `config/serve_livereload.php`.
+
