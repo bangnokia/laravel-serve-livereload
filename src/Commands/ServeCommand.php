@@ -54,8 +54,15 @@ class ServeCommand extends Command
     public function serveOptions()
     {
         return collect($this->options())
-            ->filter(fn($option) => $option)
-            ->map(fn($value, $key) =>  is_bool($value) ? "--{$key}" : "--{$key}={$value}")
-            ->values();
+            ->filter(function($option) {
+                return $option;
+
+            })->map(function($value, $key) {
+                if(is_bool($value))
+                    return "--{$key}";
+
+                return "--{$key}={$value}";
+                
+            })->values();
     }
 }
