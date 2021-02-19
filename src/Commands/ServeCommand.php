@@ -8,7 +8,11 @@ use Symfony\Component\Process\Process;
 
 class ServeCommand extends Command
 {
-    protected $signature = 'serve';
+    protected $signature = 'serve
+        {--host= : The host address to serve the application on}
+        {--port= : The port to serve the application on}
+        {--tries= : The max number of ports to attempt to serve from}
+        {--no-reload : Do not reload the development server on .env file changes}';
 
     protected $description = 'Serve the application on the PHP development server';
 
@@ -18,7 +22,7 @@ class ServeCommand extends Command
         $artisanPath = base_path('artisan');
 
         $processes = [
-            $httpProcess = new Process([$phpBinaryPath, $artisanPath, 'serve:http']),
+            $httpProcess = new Process([$phpBinaryPath, $artisanPath, 'serve:http', ...$this->serveOptions()]),
             $socketProcess = new Process([$phpBinaryPath, $artisanPath, 'serve:websockets']),
         ];
 
@@ -45,5 +49,13 @@ class ServeCommand extends Command
             }
             sleep(1);
         }
+    }
+
+    public function serveOptions()
+    {
+        return collect($this->options())
+            ->filter(fn($option) => $option)
+            ->map(fn($value, $key) =>  is_bool($value) ? "--{$key}" : "--{$key}={$value}")
+            ->values();
     }
 }
