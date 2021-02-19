@@ -54,15 +54,14 @@ class ServeCommand extends Command
     public function serveOptions()
     {
         return collect($this->options())
-            ->filter(function($option) {
+            ->filter(function ($option) {
                 return $option;
-
-            })->map(function($value, $key) {
-                if(is_bool($value))
+            })->map(function ($value, $key) {
+                if (is_bool($value)) {
                     return "--{$key}";
+                }
 
                 return "--{$key}={$value}";
-                
             })->values();
     }
 }
