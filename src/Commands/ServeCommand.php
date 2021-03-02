@@ -22,7 +22,7 @@ class ServeCommand extends Command
         $artisanPath = base_path('artisan');
 
         $processes = [
-            $httpProcess = new Process([$phpBinaryPath, $artisanPath, 'serve:http', ...$this->serveOptions()]),
+            $httpProcess = new Process([$phpBinaryPath, $artisanPath, 'serve:http', $this->serveOptions()->implode(' ')]),
             $socketProcess = new Process([$phpBinaryPath, $artisanPath, 'serve:websockets']),
         ];
 
@@ -62,6 +62,6 @@ class ServeCommand extends Command
                 }
 
                 return "--{$key}={$value}";
-            })->values();
+            });
     }
 }
