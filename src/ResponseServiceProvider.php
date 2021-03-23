@@ -2,8 +2,9 @@
 
 namespace BangNokia\ServeLiveReload;
 
-use BangNokia\ServeLiveReload\Middleware\InjectScriptsMiddleware;
+use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\ServiceProvider;
+use BangNokia\ServeLiveReload\Middleware\InjectScriptsMiddleware;
 
 class ResponseServiceProvider extends ServiceProvider
 {
@@ -11,6 +12,7 @@ class ResponseServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__.'/../views/', 'serve_livereload');
 
-        $this->app['router']->pushMiddlewareToGroup('web', InjectScriptsMiddleware::class);
+        $this->app->make(Kernel::class)
+            ->prependMiddlewareToGroup('web', InjectScriptsMiddleware::class);
     }
 }
