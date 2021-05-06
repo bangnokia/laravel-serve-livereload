@@ -7,6 +7,7 @@ use Closure;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 
 class InjectScriptsMiddleware
 {
@@ -17,6 +18,7 @@ class InjectScriptsMiddleware
         if (
             Cache::get('serve_websockets_running') === true
             && $request->getMethod() === Request::METHOD_GET
+            && Str::startsWith($response->headers->get('Content-Type'), 'text/html')
             && !$request->isXmlHttpRequest()
             && !$response instanceof JsonResponse
         ) {
