@@ -1,6 +1,10 @@
 # Laravel Serve LiveReload
 
-This package integrates into default `artisan serve` command an WebSockets server for live reloading the application when any file changed. How it works, checkout my [blog post](https://daudau.cc/posts/laravel-live-reload-without-javascript.html) for explaination if you don't like digging into source code.
+
+>**This package is daed, please use the new [Vite integrated](https://laravel.com/docs/9.x/vite#introduction) instead**
+
+
+This package integrates into default `artisan serve` command an WebSockets server for live reloading the application when any file changed. How it works, checkout my [blog post](https://daudau.cc/posts/laravel-live-reload-without-javascript) for explaination if you don't like digging into source code.
 
 ![Laravel serve livereload](demo.gif)
 
